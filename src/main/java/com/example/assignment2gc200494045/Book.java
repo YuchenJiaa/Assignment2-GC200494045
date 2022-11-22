@@ -11,5 +11,9 @@ public class Book {
     private String uri;
     private String summary;
 
+    public String toString()
+    {
+        return String.format("%s-%s",publication_dt,book_title);
+    }
 
 }

@@ -1,0 +1,16 @@
+.root{
+    -fx-background-color: linear-gradient(from 275px 275px to 700px 700px, #FFE0B2,#FFF9C4);
+    -fx-font-size: 12pt;
+}
+
+.label{
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: brown;
+    -fx-font-size: 27px;
+    -fx-font-style: italic;
+ }
+
+ .button{
+     -fx-background-radius: 20px;
+
+ }
