@@ -18,7 +18,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        APIUtility.getBooksFromNYT("haha");
+        //APIUtility.getBooksFromNYT("haha");
+        APIResponse apiResponse = APIUtility.getBooksFromFile();
         launch();
     }
 }

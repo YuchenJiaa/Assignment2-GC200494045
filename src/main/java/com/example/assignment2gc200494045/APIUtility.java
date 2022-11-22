@@ -28,7 +28,31 @@ public class APIUtility {
                 .BodyHandlers
                 .ofFile(Paths.get("books.json")));
     }
+    public static APIResponse getBooksFromFile()
+    {
+        //Create a GSON object.  GSON is the Google library that can read and write
+        //JSON
+        //in order to use this library, we need to update the pom.xml and module-info.java
+        //files.  Don't forget to reload the Maven dependencies
+        Gson gson = new Gson();
 
+        APIResponse apiResponse = null;
+
+        //open the file and pass it into the Gson object to covert JSON objects
+        //to Java objects
+        try(
+                FileReader fileReader = new FileReader("books.json");
+                JsonReader jsonReader = new JsonReader(fileReader);
+        )
+        {
+            apiResponse = gson.fromJson(jsonReader, APIResponse.class);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return apiResponse;
+    }
 
 }
 
