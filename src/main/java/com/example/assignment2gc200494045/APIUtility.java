@@ -15,8 +15,10 @@ import java.nio.file.Paths;
 public class APIUtility {
     //call an API, make a request, receive the response and write it to a file
     public static void getBooksFromNYT(String searchTerm) throws IOException, InterruptedException {
+        //handle the spaces
+        searchTerm = searchTerm.replaceAll(" ","%20");
         //This is the same search http String that you used in your browser
-        String uri = "https://api.nytimes.com/svc/books/v3/reviews.json?api-key=mo5tniIxtHGt75HYQnyXUWoE8i02kbJM&author=stephen%20king";
+        String uri = "https://api.nytimes.com/svc/books/v3/reviews.json?api-key=mo5tniIxtHGt75HYQnyXUWoE8i02kbJM&author="+searchTerm;
 
         //configure the environment to make an HTTP request (this includes an update to
         //the module-info.java file
