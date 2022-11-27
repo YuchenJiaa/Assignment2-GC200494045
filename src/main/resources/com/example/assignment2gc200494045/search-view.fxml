@@ -21,7 +21,7 @@
                   <Button mnemonicParsing="false" onAction="#search" text="Search" />
                </children>
             </HBox>
-            <HBox>
+            <HBox fx:id="resultsBox">
                <children>
                   <VBox>
                      <children>
@@ -36,14 +36,14 @@
                         <Insets left="30.0" />
                      </padding>
                   </VBox>
-                  <VBox fx:id="moreInfoButton" alignment="CENTER">
+                  <VBox alignment="CENTER">
                      <children>
                         <Label fx:id="remindLabel" alignment="CENTER" prefHeight="185.0" prefWidth="266.0" text="Click on a book and then click More Info button to see the details" textAlignment="CENTER" wrapText="true">
                            <padding>
                               <Insets left="20.0" right="20.0" />
                            </padding>
                         </Label>
-                        <Button mnemonicParsing="false" text="More Info" />
+                        <Button fx:id="moreInfoButton" mnemonicParsing="false" text="More Info" />
                      </children>
                   </VBox>
                </children>
