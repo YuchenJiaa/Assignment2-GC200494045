@@ -21,11 +21,15 @@
                   <Button mnemonicParsing="false" onAction="#search" text="Search" />
                </children>
             </HBox>
+            <Label fx:id="booksFoundLabel" text="Books found:">
+               <padding>
+                  <Insets right="500.0" />
+               </padding>
+            </Label>
             <HBox fx:id="resultsBox">
                <children>
                   <VBox>
                      <children>
-                        <Label fx:id="booksFoundLabel" text="Books found:" />
                         <ListView fx:id="bookListView" maxWidth="400.0" prefHeight="382.0" prefWidth="550.0">
                            <opaqueInsets>
                               <Insets />
