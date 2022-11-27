@@ -15,8 +15,8 @@
             <VBox alignment="CENTER" spacing="10.0">
                <children>
                   <Label alignment="TOP_LEFT" text="The Best New York Times Database" />
-                  <Label id="msgLabel" fx:id="moreInfoLabel" prefHeight="430.0" prefWidth="500.0" text="Label" />
-                  <Button mnemonicParsing="false" text="Back" />
+                  <Label id="msgLabel" fx:id="moreInfoLabel" prefHeight="430.0" prefWidth="500.0" text="Label" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#getBack" text="Back" />
                </children>
                <opaqueInsets>
                   <Insets />

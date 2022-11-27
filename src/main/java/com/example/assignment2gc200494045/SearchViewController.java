@@ -36,6 +36,14 @@ public class SearchViewController implements Initializable {
     private TextField searchTextField;
 
     @FXML
+    void getDetails(ActionEvent event) throws IOException {
+        Book booksSelected = bookListView.getSelectionModel().getSelectedItem();
+        SceneChanger.changeToSecondScene(event, "info-view.fxml", booksSelected.getUrl(),booksSelected.getPublication_dt(),
+                booksSelected.getByline(),booksSelected.getBook_title(),booksSelected.getBook_author(),booksSelected.getUuid(),
+                booksSelected.getUri(),booksSelected.getSummary());
+    }
+
+    @FXML
     void search(ActionEvent event) throws IOException, InterruptedException {
         APIUtility.getBooksFromNYT(searchTextField.getText());
         APIResponse apiResponse = APIUtility.getBooksFromFile();

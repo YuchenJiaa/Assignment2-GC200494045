@@ -26,4 +26,36 @@ public class Book implements Comparable<Book>{
             return -(this.publication_dt.compareTo(otherBook.publication_dt));
 
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPublication_dt() {
+        return publication_dt;
+    }
+
+    public String getByline() {
+        return byline;
+    }
+
+    public String getBook_title() {
+        return book_title;
+    }
+
+    public String getBook_author() {
+        return book_author;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
 }

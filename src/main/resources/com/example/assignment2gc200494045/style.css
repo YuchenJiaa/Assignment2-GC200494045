@@ -33,8 +33,8 @@
 
  #msgLabel{
      -fx-text-fill: #e0820f;
-     -fx-font: bold 16pt "Forte";
-     -fx-background-color: brown;
+     -fx-font: bold 12pt "Forte";
+     -fx-background-color: white;
      -fx-background-radius: 20px;
      -fx-padding: 10px;
  }
