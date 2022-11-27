@@ -30,3 +30,11 @@
  #booksFoundLabel{
      -fx-font-size: 14pt;
  }
+
+ #msgLabel{
+     -fx-text-fill: #e0820f;
+     -fx-font: bold 16pt "Forte";
+     -fx-background-color: brown;
+     -fx-background-radius: 20px;
+     -fx-padding: 10px;
+ }
