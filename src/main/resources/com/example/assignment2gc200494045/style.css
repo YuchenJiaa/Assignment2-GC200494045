@@ -6,7 +6,7 @@
 
 .label{
     -fx-font-family: "Times New Roman";
-    -fx-text-fill: brown;
+    -fx-text-fill: #0b6aa2;
     -fx-font-size: 27px;
     -fx-font-style: italic;
  }
@@ -31,10 +31,16 @@
      -fx-font-size: 14pt;
  }
 
- #msgLabel{
-     -fx-text-fill: #e0820f;
-     -fx-font: bold 12pt "Forte";
+ #titleLabel{
+     -fx-text-fill: #873e23;
+     -fx-font: bold 14pt "Times New Roman";
      -fx-background-color: white;
      -fx-background-radius: 20px;
-     -fx-padding: 10px;
+ }
+
+ #msgLabel{
+     -fx-text-fill: #873e23;
+     -fx-font: bold 12pt "Times New Roman";
+     -fx-background-color: white;
+     -fx-background-radius: 20px;
  }

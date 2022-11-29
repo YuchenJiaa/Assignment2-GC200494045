@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -36,13 +38,17 @@ public class SearchViewController implements Initializable {
     private TextField searchTextField;
 
     @FXML
+    private ImageView arrowImageView;
+    //when click details button, use the changeToSecondScene method to switch the scene
+    @FXML
     void getDetails(ActionEvent event) throws IOException {
         Book booksSelected = bookListView.getSelectionModel().getSelectedItem();
         SceneChanger.changeToSecondScene(event, "info-view.fxml", booksSelected.getUrl(),booksSelected.getPublication_dt(),
                 booksSelected.getByline(),booksSelected.getBook_title(),booksSelected.getBook_author(),booksSelected.getUuid(),
                 booksSelected.getUri(),booksSelected.getSummary());
     }
-
+    //when click search button, API is called and returns a JSON file.
+    //Then it is parsed and displayed as Nook objects in the ListView
     @FXML
     void search(ActionEvent event) throws IOException, InterruptedException {
         APIUtility.getBooksFromNYT(searchTextField.getText());
@@ -55,7 +61,10 @@ public class SearchViewController implements Initializable {
         else
         {
             resultsBox.setVisible(true);
+            arrowImageView.setImage(new Image(Main.class
+                    .getResourceAsStream("images/arrowReminder.png")));
         }
+
         booksFoundLabel.setVisible(true);
         bookListView.getItems().clear();
         bookListView.getItems().addAll(apiResponse.getBooks());
@@ -63,19 +72,12 @@ public class SearchViewController implements Initializable {
         updateLabels();
     }
 
-//    @FXML
-//    private void search() throws IOException, InterruptedException {
-//        APIUtility.getBooksFromNYT(searchTextField.getText());
-//        APIResponse apiResponse = APIUtility.getBooksFromFile();
-//        bookListView.getItems().addAll(apiResponse.getResults());
-//    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resultsBox.setVisible(false);
         booksFoundLabel.setVisible(false);
     }
-
+    //calculate the number of books results
     private void updateLabels(){
         booksFoundLabel.setText("Books found: "+ bookListView.getItems().size());
     }

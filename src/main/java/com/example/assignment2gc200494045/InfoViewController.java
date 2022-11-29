@@ -15,6 +15,9 @@ public class InfoViewController implements Initializable {
     private Label moreInfoLabel;
 
     @FXML
+    private Label titleLabel;
+
+    @FXML
     void getBack(ActionEvent event) throws IOException {
         SceneChanger.changeToFirstScene(event, "search-view.fxml");
     }
@@ -27,9 +30,9 @@ public class InfoViewController implements Initializable {
     public void getBookInfo( String url, String publication_dt, String byline, String book_title,
                              String book_author, String uuid, String uri, String summary)
     {
-        moreInfoLabel.setText("Url: "+url+"\n"+"Publication date: "+publication_dt+"\n"+"Byline: "+byline+
-                "\n"+"Book title: "+book_title+"\n"+"Book author: "+book_author+"\n"+"Uuid: "+uuid+
-                "\n"+"Uri: "+uri+"\n"+"Summary: "+summary);
+        titleLabel.setText(publication_dt+" - "+book_title);
+        moreInfoLabel.setText("Url: "+url+"\n"+"Byline: "+byline+"\n"+"Book author: "+book_author+
+                "\n"+"Uuid: "+uuid+"\n"+"Uri: "+uri+"\n"+"Summary: "+summary);
     }
 
 }

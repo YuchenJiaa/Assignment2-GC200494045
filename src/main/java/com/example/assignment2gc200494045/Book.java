@@ -1,7 +1,7 @@
 package com.example.assignment2gc200494045;
 
 public class Book implements Comparable<Book>{
-//just make what you want to show on the view, I don't need to declare all
+//just make what you want to show on the view, I don't need to declare all from API
     private String url;
     private String publication_dt;
     private String byline;

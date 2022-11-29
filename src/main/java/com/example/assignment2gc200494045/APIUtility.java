@@ -40,8 +40,7 @@ public class APIUtility {
 
         APIResponse apiResponse = null;
 
-        //open the file and pass it into the Gson object to covert JSON objects
-        //to Java objects
+        //open the file and pass it into the Gson object to covert JSON objects to Java objects
         try(
                 FileReader fileReader = new FileReader("books.json");
                 JsonReader jsonReader = new JsonReader(fileReader);
