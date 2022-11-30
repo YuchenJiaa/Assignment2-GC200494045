@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,18 +38,28 @@ public class SearchViewController implements Initializable {
 
     @FXML
     private ImageView arrowImageView;
-    //when click details button, use the changeToSecondScene method to switch the scene
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        resultsBox.setVisible(false);
+        booksFoundLabel.setVisible(false);
+    }
+    /**
+     * when click MoreInfo button, use the changeToSecondScene method to switch the scene
+     */
     @FXML
-    void getDetails(ActionEvent event) throws IOException {
+    private void getDetails(ActionEvent event) throws IOException {
         Book booksSelected = bookListView.getSelectionModel().getSelectedItem();
         SceneChanger.changeToSecondScene(event, "info-view.fxml", booksSelected.getUrl(),booksSelected.getPublication_dt(),
                 booksSelected.getByline(),booksSelected.getBook_title(),booksSelected.getBook_author(),booksSelected.getUuid(),
                 booksSelected.getUri(),booksSelected.getSummary());
     }
-    //when click search button, API is called and returns a JSON file.
-    //Then it is parsed and displayed as Nook objects in the ListView
+    /**
+     * when click search button, API is called and returns a JSON file.
+     * Then it is parsed and displayed as Nook objects in the ListView
+     */
     @FXML
-    void search(ActionEvent event) throws IOException, InterruptedException {
+    private void search(ActionEvent event) throws IOException, InterruptedException {
         APIUtility.getBooksFromNYT(searchTextField.getText());
         APIResponse apiResponse = APIUtility.getBooksFromFile();
         //show the number of books in the label
@@ -72,15 +81,38 @@ public class SearchViewController implements Initializable {
         updateLabels();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        resultsBox.setVisible(false);
-        booksFoundLabel.setVisible(false);
+    /**
+     * this method will pass the author that user searched, then show the view
+     * @param author
+     */
+    public void getFirstScene(String author) throws IOException, InterruptedException {
+        APIUtility.getBooksFromNYT(author);
+        APIResponse apiResponse = APIUtility.getBooksFromFile();
+        //show the number of books in the label
+        if (apiResponse.getNum_results()==0)
+        {
+            resultsBox.setVisible(false);
+        }
+        else
+        {
+            resultsBox.setVisible(true);
+            arrowImageView.setImage(new Image(Main.class
+                    .getResourceAsStream("images/arrowReminder.png")));
+        }
+
+        booksFoundLabel.setVisible(true);
+        bookListView.getItems().clear();
+        bookListView.getItems().addAll(apiResponse.getBooks());
+        Collections.sort(bookListView.getItems());
+        updateLabels();
     }
-    //calculate the number of books results
+    /**
+     * calculate the number of books results
+     */
     private void updateLabels(){
         booksFoundLabel.setText("Books found: "+ bookListView.getItems().size());
     }
+
 }
 
 
